@@ -1,0 +1,155 @@
+.about-section {
+  background: #ffffff;
+}
+
+.about-container {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  margin-bottom: 80px;
+}
+
+.about-description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #555;
+}
+
+.about-description p {
+  margin-bottom: 20px;
+}
+
+.about-description strong {
+  color: #ffb400;
+  font-weight: 600;
+}
+
+.fun-facts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.fun-fact-card {
+  background: linear-gradient(135deg, #ffb400 0%, #ffa000 100%);
+  padding: 30px;
+  border-radius: 12px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.fun-fact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(255, 180, 0, 0.3);
+}
+
+.fun-fact-number {
+  font-size: 36px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 5px;
+}
+
+.fun-fact-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000000;
+  opacity: 0.8;
+}
+
+.what-i-do-section {
+  margin-top: 60px;
+}
+
+.subsection-title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #000000;
+}
+
+.what-i-do-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.what-i-do-card {
+  border: 2px solid #f0f0f0;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.what-i-do-card:hover {
+  border-color: #ffb400;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.what-i-do-content {
+  padding: 30px;
+  text-align: center;
+}
+
+.what-i-do-icon {
+  width: 80px;
+  height: 80px;
+  background: #000000;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  color: #ffb400;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.what-i-do-card:hover .what-i-do-icon {
+  background: #ffb400;
+  color: #000000;
+  transform: scale(1.1);
+}
+
+.what-i-do-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 10px;
+}
+
+.what-i-do-description {
+  font-size: 14px;
+  color: #666;
+}
+
+@media (max-width: 1024px) {
+  .what-i-do-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .fun-facts-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .what-i-do-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .subsection-title {
+    font-size: 28px;
+  }
+}
