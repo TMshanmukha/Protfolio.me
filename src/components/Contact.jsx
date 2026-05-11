@@ -52,7 +52,7 @@ const Contact = () => {
     if (formData.name && formData.email && formData.message) {
 
       try {
-        await axios.post("http://localhost:8080/", formData);
+        await axios.post("https://protfolio-backend-mylm.onrender.com/", formData);
         toast({
           title: "Email Message Sent!",
           description: "Thank you for reaching out. I'll get back to you soon.",
