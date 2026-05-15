@@ -27,7 +27,7 @@ const Contact = () => {
       icon: Linkedin,
       label: 'LinkedIn',
       value: 'linkedin.com/in/shanmukha',
-      link: 'https://linkedin.com/in/tm-shanmukha-chandrra-a43b15321',
+      link: 'www.linkedin.com/in/tm-shanmukha-chandrra-a43b15321',
     },
     {
       icon: Github,
