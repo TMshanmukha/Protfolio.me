@@ -47,21 +47,21 @@ const Contact = () => {
     e.preventDefault();
     console.log("Form Submitted");
     console.log(formData);
-    
+
     // Mock form submission (frontend only)
     if (formData.name && formData.email && formData.message) {
 
       try {
-        await axios.post("https://protfolio-backend-mylm.onrender.com/", formData);
+        await axios.post("http://localhost:8080/", formData);
         toast({
           title: "Email Message Sent!",
           description: "Thank you for reaching out. I'll get back to you soon.",
         });
-      }catch (error) {
+      } catch (error) {
         console.log(error);
         alert("Error sending email");
       }
-      
+
       // Reset form
       setFormData({ name: '', email: '', message: '' });
     } else {
@@ -92,7 +92,7 @@ const Contact = () => {
           <div className="contact-info-section">
             <h3 className="contact-info-title">Contact Information</h3>
             <p className="contact-info-description">
-              Feel free to reach out to me through any of the following channels. 
+              Feel free to reach out to me through any of the following channels.
               I'm always open to discussing new projects, creative ideas, or opportunities.
             </p>
 
