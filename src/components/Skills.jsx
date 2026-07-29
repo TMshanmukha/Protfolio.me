@@ -4,26 +4,28 @@ import './Skills.css';
 
 const Skills = () => {
   const education = {
-    degree: 'B.Tech in Electrical and Computer Science',
+    degree: 'B.Tech in Electrical and Computer Science Engineering (ECSE)',
     institution: 'VIT Vellore',
-    year: '3rd Year',
+    cgpa: '8.91',
   };
 
-  const technicalSkills = [
-    { name: 'Java', level: 85 },
-    { name: 'SQL', level: 75 },
-    { name: 'React', level: 70 },
-    { name: 'HTML & CSS', level: 90 },
-    { name: 'JavaScript', level: 75 },
-    { name: 'Git & GitHub', level: 80 },
+  const skillGroups = [
+    { category: 'Languages', items: ['Java', 'JavaScript', 'SQL', 'C'] },
+    { category: 'Frontend', items: ['React', 'HTML', 'CSS', 'Tailwind CSS'] },
+    { category: 'Backend', items: ['Node.js', 'Express.js'] },
+    { category: 'Database', items: ['MySQL', 'TiDB'] },
+    { category: 'Tools', items: ['Git', 'GitHub', 'VS Code', 'Postman', 'Vercel', 'Render'] },
   ];
 
   const otherSkills = [
-    'Problem Solving',
-    'Data Structures & Algorithms',
     'Database Design',
-    'API Development',
-    'Logic Building',
+    'REST API Development',
+    'Responsive UI',
+    'Authentication Systems',
+    'Git Version Control',
+    'Problem Solving',
+    'Debugging',
+    'Full Stack Development',
   ];
 
   return (
@@ -44,7 +46,7 @@ const Skills = () => {
                 <div className="education-badge">Current</div>
                 <h3 className="education-degree">{education.degree}</h3>
                 <p className="education-institution">{education.institution}</p>
-                <p className="education-year">{education.year}</p>
+                <p className="education-year">CGPA: {education.cgpa}</p>
               </div>
             </CardContent>
           </Card>
@@ -52,22 +54,18 @@ const Skills = () => {
           <div className="skills-grid">
             <div>
               <h3 className="skills-category-title">Technical Skills</h3>
-              <div className="technical-skills-list">
-                {technicalSkills.map((skill, index) => (
-                  <div key={index} className="skill-item">
-                    <div className="skill-header">
-                      <span className="skill-name">{skill.name}</span>
-                      <span className="skill-percentage">{skill.level}%</span>
-                    </div>
-                    <div className="skill-bar-container">
-                      <div 
-                        className="skill-bar-fill" 
-                        style={{ width: `${skill.level}%` }}
-                      ></div>
-                    </div>
+              {skillGroups.map((group, index) => (
+                <div key={index} className="skill-group">
+                  <p className="skill-group-title">{group.category}</p>
+                  <div className="skill-badges">
+                    {group.items.map((item, i) => (
+                      <div key={i} className="skill-badge">
+                        {item}
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
 
             <div>

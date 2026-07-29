@@ -6,24 +6,29 @@ import './About.css';
 const About = () => {
   const whatIDo = [
     {
-      icon: Code,
-      title: 'Backend Development',
-      description: 'Java, SQL, APIs'
-    },
-    {
       icon: Palette,
       title: 'Frontend Development',
-      description: 'React, HTML, CSS, JavaScript'
+      description: 'React, HTML, CSS, Tailwind CSS'
+    },
+    {
+      icon: Code,
+      title: 'Backend Development',
+      description: 'Node.js, Express.js'
     },
     {
       icon: Database,
       title: 'Database Design',
-      description: 'Optimization & Management'
+      description: 'MySQL, TiDB'
+    },
+    {
+      icon: Cpu,
+      title: 'API Development',
+      description: 'REST APIs & Integrations'
     },
     {
       icon: Layers,
-      title: 'DSA Problem Solving',
-      description: 'Algorithms & Data Structures'
+      title: 'Problem Solving',
+      description: 'Debugging & Logic Building'
     },
     {
       icon: GitBranch,
@@ -33,11 +38,13 @@ const About = () => {
   ];
 
   const funFacts = [
-    { number: '1+', label: 'Year Coding Experience' },
-    { number: '2', label: 'Mern Stack Projects Built' },
-    { number: '100+', label: 'DSA Problems Solved' },
-    { number: '100%', label: 'Dedication to Learning' },
+    { number: '18+', label: 'Technologies' },
+    { number: '8+', label: 'Core Skills' },
+    { number: '1', label: 'Major Project' },
+    { number: '6+', label: 'Dev Tools' },
   ];
+
+  const currentlyExploring = ['AWS', 'Docker', 'System Design', 'Advanced Backend', 'Microservices'];
 
   return (
     <section id="about" className="section about-section">
@@ -50,14 +57,17 @@ const About = () => {
         <div className="about-content">
           <div className="about-description">
             <p>
-              I am a motivated engineering student with strong foundations in <strong>Java</strong>, <strong>C/C++</strong>, 
-              <strong> SQL</strong>, and <strong>Frontend Development</strong>. I enjoy solving algorithmic problems and 
-              designing efficient systems.
+              I'm <strong>TM Shanmukha Chandrra</strong>, a Full Stack Developer pursuing my B.Tech in
+              Electrical and Computer Science Engineering (ECSE) at <strong>VIT Vellore</strong>. I build
+              scalable full-stack web applications using <strong>React</strong>, <strong>Node.js</strong>,
+              <strong> Express.js</strong>, and <strong>MySQL/TiDB</strong>, with a focus on clean
+              architecture and reliable APIs.
             </p>
             <p>
-              My goal is to secure a high-impact software engineering role and build scalable backend systems that make 
-              a real difference. Currently working on exciting projects including a <strong>School Management System</strong> and intersted 
-              to work in an innovative <strong>IoT Websites</strong> concept.
+              My current focus is <strong>Vintage Fashion</strong>, a full-stack e-commerce platform
+              featuring JWT authentication, admin and customer dashboards, Razorpay payments, and
+              Cloudinary-powered media handling. Long term, my goal is to become a Software Engineer
+              specializing in <strong>Backend Development</strong> and <strong>Cloud Technologies</strong>.
             </p>
           </div>
 
@@ -88,6 +98,17 @@ const About = () => {
                 </Card>
               );
             })}
+          </div>
+        </div>
+
+        <div className="exploring-section">
+          <h3 className="subsection-title">Currently Exploring</h3>
+          <div className="exploring-badges">
+            {currentlyExploring.map((tech, index) => (
+              <div key={index} className="exploring-badge">
+                {tech}
+              </div>
+            ))}
           </div>
         </div>
       </div>
