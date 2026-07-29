@@ -104,12 +104,6 @@
   transform: translateY(-2px);
 }
 
-@keyframes fillBar {
-  from {
-    width: 0;
-  }
-}
-
 .other-skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
