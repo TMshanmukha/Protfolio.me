@@ -5,7 +5,7 @@ import './Projects.css';
 
 import adminAuth from "../assets/admin_auth.png";
 import adminDashboard from "../assets/admin_dashB.png";
-import adminOrders from "../assets/admin_orders.png";
+import adminOrders from "../assets/admin_Orders.png";
 import adminMarketing from "../assets/admin_market.png";
 import adminEmail from "../assets/admin_emC.png";
 import userFront from "../assets/user_frnt.png";
