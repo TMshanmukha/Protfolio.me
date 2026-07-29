@@ -1,5 +1,8 @@
 .skills-section {
-  background: #fafafa;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 180, 0, 0.06) 0%, transparent 45%),
+    radial-gradient(circle at 85% 90%, rgba(255, 180, 0, 0.05) 0%, transparent 45%),
+    #fafafa;
 }
 
 .skills-container {
@@ -87,6 +90,9 @@
 }
 
 .skill-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
   background: #ffffff;
   border: 2px solid #f0f0f0;
   padding: 8px 16px;
@@ -94,14 +100,22 @@
   font-size: 13px;
   font-weight: 500;
   color: #000000;
-  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.3s ease, background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
+}
+
+.skill-icon {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .skill-badge:hover {
   border-color: #ffb400;
   background: #fffef5;
   transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 180, 0, 0.15);
 }
 
 .other-skills-grid {

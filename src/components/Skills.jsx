@@ -2,6 +2,8 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import './Skills.css';
 
+const ICON_BASE = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons';
+
 const Skills = () => {
   const education = {
     degree: 'B.Tech in Electrical and Computer Science Engineering (ECSE)',
@@ -10,11 +12,49 @@ const Skills = () => {
   };
 
   const skillGroups = [
-    { category: 'Languages', items: ['Java', 'JavaScript', 'SQL', 'C'] },
-    { category: 'Frontend', items: ['React', 'HTML', 'CSS', 'Tailwind CSS'] },
-    { category: 'Backend', items: ['Node.js', 'Express.js'] },
-    { category: 'Database', items: ['MySQL', 'TiDB'] },
-    { category: 'Tools', items: ['Git', 'GitHub', 'VS Code', 'Postman', 'Vercel', 'Render'] },
+    {
+      category: 'Languages',
+      items: [
+        { name: 'Java', icon: `${ICON_BASE}/java/java-original.svg` },
+        { name: 'JavaScript', icon: `${ICON_BASE}/javascript/javascript-original.svg` },
+        { name: 'SQL', icon: `${ICON_BASE}/mysql/mysql-original.svg` },
+        { name: 'C', icon: `${ICON_BASE}/c/c-original.svg` },
+      ],
+    },
+    {
+      category: 'Frontend',
+      items: [
+        { name: 'React', icon: `${ICON_BASE}/react/react-original.svg` },
+        { name: 'HTML', icon: `${ICON_BASE}/html5/html5-original.svg` },
+        { name: 'CSS', icon: `${ICON_BASE}/css3/css3-original.svg` },
+        { name: 'Tailwind CSS', icon: `${ICON_BASE}/tailwindcss/tailwindcss-original.svg` },
+      ],
+    },
+    {
+      category: 'Backend',
+      items: [
+        { name: 'Node.js', icon: `${ICON_BASE}/nodejs/nodejs-original.svg` },
+        { name: 'Express.js', icon: `${ICON_BASE}/express/express-original.svg` },
+      ],
+    },
+    {
+      category: 'Database',
+      items: [
+        { name: 'MySQL', icon: `${ICON_BASE}/mysql/mysql-original.svg` },
+        { name: 'TiDB', icon: `${ICON_BASE}/mysql/mysql-original.svg` },
+      ],
+    },
+    {
+      category: 'Tools',
+      items: [
+        { name: 'Git', icon: `${ICON_BASE}/git/git-original.svg` },
+        { name: 'GitHub', icon: `${ICON_BASE}/github/github-original.svg` },
+        { name: 'VS Code', icon: `${ICON_BASE}/vscode/vscode-original.svg` },
+        { name: 'Postman', icon: `${ICON_BASE}/postman/postman-original.svg` },
+        { name: 'Vercel', icon: `${ICON_BASE}/vercel/vercel-original.svg` },
+        { name: 'Render', icon: `${ICON_BASE}/render/render-original.svg` },
+      ],
+    },
   ];
 
   const otherSkills = [
@@ -60,7 +100,14 @@ const Skills = () => {
                   <div className="skill-badges">
                     {group.items.map((item, i) => (
                       <div key={i} className="skill-badge">
-                        {item}
+                        <img
+                          src={item.icon}
+                          alt={item.name}
+                          className="skill-icon"
+                          loading="lazy"
+                          onError={(e) => { e.target.style.display = 'none'; }}
+                        />
+                        <span>{item.name}</span>
                       </div>
                     ))}
                   </div>

@@ -1,94 +1,194 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent } from './ui/card';
-import { ExternalLink, Github } from 'lucide-react';
-import { Button } from './ui/button';
+import { X } from 'lucide-react';
 import './Projects.css';
 
+import adminAuth from "../assets/admin_auth.png";
+import adminDashboard from "../assets/admin_dashB.png";
+import adminOrders from "../assets/admin_orders.png";
+import adminMarketing from "../assets/admin_market.png";
+import adminEmail from "../assets/admin_emC.png";
+import userFront from "../assets/user_frnt.png";
+import userAuth from "../assets/user_auth.png";
+import userOrders from "../assets/user_orders.png";
+import userTracking from "../assets/user_O2.png";
+
+
+// Small curved connector arrow (orange), reusable in both directions
+const Connector = ({ flip }) => (
+  <svg
+    className={`connector-svg ${flip ? 'connector-flip' : ''}`}
+    width="70"
+    height="70"
+    viewBox="0 0 70 70"
+    fill="none"
+  >
+    <path
+      d="M5 5 C 5 45, 65 25, 65 65"
+      stroke="#ffb400"
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      fill="none"
+      markerEnd="url(#arrowhead)"
+    />
+    <defs>
+      <marker id="arrowhead" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+        <path d="M0,0 L6,3 L0,6 Z" fill="#ffb400" />
+      </marker>
+    </defs>
+  </svg>
+);
+
 const Projects = () => {
-  const projects = [
+  const [expandedId, setExpandedId] = useState(null);
+
+  // One real project: "Vintage Fashion" — shown as a build roadmap
+  const roadmap = [
     {
-      title: 'School Management System',
-      description: 'A comprehensive school management platform built with Next.js and SQL for managing students, teachers, and administrative tasks.',
-      tech: ['Next.js', 'SQL', 'React', 'Node.js'],
-      image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzNDR8MHwxfHNlYXJjaHwxfHxkYXNoYm9hcmR8ZW58MHx8fHwxNzcyNTE5NDYzfDA&ixlib=rb-4.1.0&q=85',
-      liveLink: '#',
-      githubLink: '#',
+      id: 1,
+      title: 'Admin Login',
+      description: 'Secure admin portal with protected route access to the dashboard.',
+      image: adminAuth,
     },
-    /**{
-      title: 'Alexa Water Bottle',
-      description: 'IoT concept for a smart water bottle integrated with Alexa for hydration tracking and reminders.',
-      tech: ['IoT', 'Alexa Skills', 'Python', 'Hardware'],
-      image: 'https://images.unsplash.com/photo-1519558260268-cde7e03a0152?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2OTV8MHwxfHNlYXJjaHwxfHxzbWFydCUyMGRldmljZXxlbnwwfHx8fDE3NzI1MTk0Nzl8MA&ixlib=rb-4.1.0&q=85',
-      liveLink: '#',
-      githubLink: '#',
-    },*/
     {
-      title: 'Portfolio Website',
-      description: 'Modern, responsive personal portfolio website showcasing projects and skills with smooth animations.',
-      tech: ['React', 'CSS', 'JavaScript', 'Responsive'],
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA1NTZ8MHwxfHNlYXJjaHwzfHxjb2Rpbmd8ZW58MHx8fHwxNzcyNTE5NDYwfDA&ixlib=rb-4.1.0&q=85',
-      liveLink: '#',
-      githubLink: '#',
+      id: 2,
+      title: 'Admin Dashboard',
+      description: 'Live revenue, orders, customers, and low-stock stats wired to real API data.',
+      image: adminDashboard,
     },
-    /**{
-      title: 'DSA Practice Tracker',
-      description: 'Application to track Data Structures and Algorithms problem-solving progress across multiple platforms.',
-      tech: ['React', 'Node.js', 'MongoDB', 'Charts'],
-      image: 'https://images.unsplash.com/photo-1642952469120-eed4b65104be?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjA2OTV8MHwxfHNlYXJjaHwyfHxhbGdvcml0aG18ZW58MHx8fHwxNzcyNTE5NDcxfDA&ixlib=rb-4.1.0&q=85',
-      liveLink: '#',
-      githubLink: '#',
-    },*/
     {
-      title: 'Backend API Project',
-      description: 'RESTful API with authentication, CRUD operations, and database integration for scalable applications.',
-      tech: ['Node.js', 'Express', 'MongoDB', 'JWT'],
-      image: 'https://images.unsplash.com/photo-1594904351111-a072f80b1a71?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzB8MHwxfHNlYXJjaHwzfHxhcGl8ZW58MHx8fHwxNzcyNTE5NDY3fDA&ixlib=rb-4.1.0&q=85',
-      liveLink: '#',
-      githubLink: '#',
+      id: 3,
+      title: 'Orders Management',
+      description: 'Full order lifecycle with filtering, tracking, and payment status.',
+      image: adminOrders,
     },
-    /**{
-      title: 'Database Design Projects',
-      description: 'Multiple database schema designs and optimization projects for various real-world scenarios.',
-      tech: ['SQL', 'PostgreSQL', 'Schema Design', 'Optimization'],
-      image: 'https://images.unsplash.com/photo-1639066648921-82d4500abf1a?crop=entropy&cs=srgb&fm=jpg&ixid=M3w4NjAzOTB8MHwxfHNlYXJjaHw0fHxkYXRhYmFzZXxlbnwwfHx8fDE3NzI1MTk0NzR8MA&ixlib=rb-4.1.0&q=85',
-      liveLink: '#',
-      githubLink: '#',
-    },*/
+    {
+      id: 4,
+      title: 'Marketing & Homepage',
+      description: 'Editable promotional cards, banners, and homepage sections.',
+      image:adminMarketing,
+    },
+    {
+      id: 5,
+      title: 'Email Center',
+      description: 'Transactional and marketing emails sent via Resend, with sent history.',
+      image: adminEmail,
+    },
+    {
+      id: 6,
+      title: 'Storefront Home',
+      description: 'Customer-facing homepage with hero banner and product highlights.',
+      image: userFront,
+    },
+    {
+      id: 7,
+      title: 'Customer Auth',
+      description: 'Login and signup flow for customers with JWT-based sessions.',
+      image: userAuth,
+    },
+    {
+      id: 8,
+      title: 'Order Tracking',
+      description: 'Customers can view, track, and cancel their own orders.',
+      image: userOrders,
+    },
+    {
+      id: 9,
+      title: 'Live Delivery Map',
+      description: 'Real-time shipment tracking with a map and step-by-step status.',
+      image: userTracking,
+    },
   ];
+
+  // Row pattern: 2, 3, 2, 2 — with alternating up/middle/down offsets
+  const rows = [
+    { items: roadmap.slice(0, 2), offsets: ['up', 'down'] },
+    { items: roadmap.slice(2, 5), offsets: ['up', 'mid', 'down'] },
+    { items: roadmap.slice(5, 7), offsets: ['down', 'up'] },
+    { items: roadmap.slice(7, 9), offsets: ['up', 'down'] },
+  ];
+
+  const handleToggle = (id) => {
+    setExpandedId((prev) => (prev === id ? null : id));
+  };
 
   return (
     <section id="portfolio" className="section projects-section">
       <div className="projects-container">
         <div>
           <h2 className="section-title">Portfolio</h2>
-          <p className="section-subtitle">My Recent Work</p>
+          <p className="section-subtitle">Vintage Fashion — Build Roadmap</p>
         </div>
 
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <Card key={index} className="project-card">
-              <div className="project-image-wrapper">
-                <img src={project.image} alt={project.title} className="project-image" />
-                <div className="project-overlay">
-                  <Button variant="secondary" size="sm" className="project-button">
-                    <ExternalLink size={16} />
-                  </Button>
-                  <Button variant="secondary" size="sm" className="project-button">
-                    <Github size={16} />
-                  </Button>
-                </div>
-              </div>
-              <CardContent className="project-content">
-                <h3 className="project-title">{project.title}</h3>
-                <p className="project-description">{project.description}</p>
-                <div className="project-tech">
-                  {project.tech.map((tech, i) => (
-                    <span key={i} className="tech-badge">{tech}</span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+        <div className="roadmap">
+          {rows.map((row, rowIndex) => {
+            const expandedInRow = row.items.find((item) => item.id === expandedId);
+
+            return (
+              <React.Fragment key={rowIndex}>
+                {expandedInRow ? (
+                  // Expanded card takes the full row, medium width, centered
+                  <div className="roadmap-row roadmap-row-expanded">
+                    <Card className="roadmap-card roadmap-card-expanded">
+                      <button
+                        className="roadmap-close"
+                        onClick={() => handleToggle(expandedInRow.id)}
+                        aria-label="Close"
+                      >
+                        <X size={18} />
+                      </button>
+                      <div className="roadmap-expanded-image-wrapper">
+                        <img
+                          src={expandedInRow.image}
+                          alt={expandedInRow.title}
+                          className="roadmap-expanded-image"
+                        />
+                      </div>
+                      <CardContent className="roadmap-expanded-content">
+                        <h3 className="roadmap-title">{expandedInRow.title}</h3>
+                        <p className="roadmap-description">{expandedInRow.description}</p>
+                      </CardContent>
+                    </Card>
+                  </div>
+                ) : (
+                  <div
+                    className={`roadmap-row ${
+                      row.items.length === 3 ? 'roadmap-row-three' : 'roadmap-row-two'
+                    }`}
+                  >
+                    {row.items.map((item, i) => (
+                      <React.Fragment key={item.id}>
+                        <div className={`roadmap-item roadmap-offset-${row.offsets[i]}`}>
+                          <Card
+                            className="roadmap-card"
+                            onClick={() => handleToggle(item.id)}
+                          >
+                            <div className="roadmap-image-wrapper">
+                              <img src={item.image} alt={item.title} className="roadmap-image" />
+                            </div>
+                            <CardContent className="roadmap-content">
+                              <h4 className="roadmap-title-sm">{item.title}</h4>
+                              <p className="roadmap-description-sm">{item.description}</p>
+                            </CardContent>
+                          </Card>
+                        </div>
+
+                        {i < row.items.length - 1 && (
+                          <Connector flip={i % 2 === 1} />
+                        )}
+                      </React.Fragment>
+                    ))}
+                  </div>
+                )}
+
+                {rowIndex < rows.length - 1 && !expandedInRow && (
+                  <div className="roadmap-row-connector">
+                    <Connector flip={rowIndex % 2 === 1} />
+                  </div>
+                )}
+              </React.Fragment>
+            );
+          })}
         </div>
       </div>
     </section>
